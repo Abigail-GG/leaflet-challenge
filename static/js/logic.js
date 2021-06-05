@@ -22,7 +22,7 @@ d3.json(queryUrl).then(function(data) {
   var magnitud = featuresarray[i].properties.mag
   var mysize = magnitud*10000
   var myplace = featuresarray[i].properties.place
-  var mytype = featuresarray[i].properties.type
+  var mydate = featuresarray[i].properties.time
   var EarthquakeDepth = featuresarray[i].geometry.coordinates[2];
   var color = "";
   if (EarthquakeDepth > -10 && EarthquakeDepth <= 10){
@@ -55,7 +55,9 @@ d3.json(queryUrl).then(function(data) {
 	  weight: 0.50,
       fillColor: color,
       radius: mysize
-    }).bindPopup("<h1>" + mytype + "</h1> <hr> <h3>Magnitud: " + magnitud + "</h3> <hr> <h3>Place: " + myplace + "</h3>").addTo(map)
+    }).bindPopup("<h3>" + myplace +
+    "</h3><hr><p>" + new Date(mydate) + "</p>" + 
+    "</h3><hr><p>Magnitud: " + magnitud + "</p>").addTo(map)
   }
 });
 /*Legend specific*/
